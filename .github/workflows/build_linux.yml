@@ -26,8 +26,8 @@ jobs:
         with:
           name: bitcoin-pow-core-linux
           path: |
-            src/bitcoin-powd
-            src/bitcoin-pow-qt
-            src/bitcoin-pow-cli
-            src/bitcoin-pow-tx
-            src/bitcoin-pow-util
+            bitcoin-powd
+            bitcoin-pow-qt
+            bitcoin-pow-cli
+            bitcoin-pow-tx
+            bitcoin-pow-util
