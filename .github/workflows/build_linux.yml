@@ -1,12 +1,8 @@
 name: Build BitcoinPoW Core Linux
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
+
 jobs:
   build-linux:
     runs-on: ubuntu-latest
