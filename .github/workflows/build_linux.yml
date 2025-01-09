@@ -13,9 +13,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y \
-            build-essential libtool autotools-dev automake pkg-config bsdmainutils python3 \
-            cmake libssl-dev libboost-all-dev libqt5gui5 libqt5core5a qttools5-dev-tools
+          sudo apt-get install clang ccache build-essential cmake pkg-config python3-zmq libevent-dev libboost-dev libsqlite3-dev libdb++-dev systemtap-sdt-dev libzmq3-dev qtbase5-dev qttools5-dev qttools5-dev-tools qtwayland5 libqrencode-dev -y
 
       - name: Build BitcoinPoW Core
         run: |
