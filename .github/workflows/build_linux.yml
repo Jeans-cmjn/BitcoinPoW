@@ -1,0 +1,39 @@
+name: Build BitcoinPoW Core Linux
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential libtool autotools-dev automake pkg-config bsdmainutils python3 \
+            cmake libssl-dev libboost-all-dev libqt5gui5 libqt5core5a qttools5-dev-tools
+
+      - name: Build BitcoinPoW Core
+        run: |
+          ./autogen.sh
+          ./configure --with-gui=qt5
+          make -j$(nproc)
+
+      - name: Upload Linux Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: bitcoin-pow-core-linux
+          path: |
+            src/bitcoin-powd
+            src/bitcoin-pow-qt
+            src/bitcoin-pow-cli
+            src/bitcoin-pow-tx
+            src/bitcoin-pow-util
